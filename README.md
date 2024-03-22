@@ -1,5 +1,33 @@
 # 🌟 Welcome to the ThoughtFull Engineering Challenge: MindWellnessChat Edition!
 
+
+
+## Setup & Installation
+
+### Install Database
+- CREATE DATABASE healthchat;
+- CREATE USER healthchat_user WITH PASSWORD 'healthchat_pass';
+- ALTER ROLE healthchat_user SET client_encoding TO 'utf8';
+- ALTER ROLE healthchat_user SET default_transaction_isolation TO 'read committed';
+- ALTER ROLE healthchat_user SET timezone TO 'UTC';
+- GRANT ALL PRIVILEGES ON DATABASE healthchat TO healthchat_user;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## We appreciate your interest in our front-end / full-stack practical coding challenge.
 
 #### Your mission is to craft an ingenious Mental Health Chat App that seamlessly connects users in a supportive virtual environment. This challenge dives deep into your front-end / full-stack development skills, examining your prowess in code structuring, styling, and best practices.
