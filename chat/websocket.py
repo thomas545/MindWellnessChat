@@ -11,7 +11,7 @@ pusher_client = pusher.Pusher(
 )
 
 
-def send_ws_message(user_id: str, message: str):
+def send_ws_message(chat_id: str, message: str):
     return pusher_client.trigger(
-        "{user_id}-chat", f"{user_id}-message", {"message": message}
+        f"{chat_id}-chat", f"{chat_id}-message", {"message": message}
     )
