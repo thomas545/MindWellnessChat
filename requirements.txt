@@ -19,6 +19,7 @@ ndg-httpsclient==0.5.1
 oauthlib==3.2.2
 packaging==24.0
 pathspec==0.12.1
+pillow==10.2.0
 platformdirs==4.2.0
 psycopg2-binary==2.9.9
 pusher==3.3.2
