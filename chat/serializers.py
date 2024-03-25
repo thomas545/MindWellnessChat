@@ -37,4 +37,4 @@ class MessageSerializer(serializers.ModelSerializer):
 
 class SendMessageSerializer(serializers.Serializer):
     receiver = serializers.IntegerField(required=True)
-    content = serializers.CharField()
+    content = serializers.CharField(required=True)

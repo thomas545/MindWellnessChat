@@ -1,0 +1,148 @@
+<!-- <h1>chats_list.html welcome</h1>
+
+
+<h2>chats count: {{chats | length}}</h2>
+<h2>users count: {{users }}</h2>
+
+{% for chat in chats %}
+    {{chat.id}}
+{% endfor %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Chat</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: #f2f2f2;
+            overflow-y: auto;
+        }
+
+        .user-list {
+            padding: 20px;
+        }
+
+        .user {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .chat-window {
+            flex: 4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #075e54;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .chat-input {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .chat-input input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .chat-input button {
+            background-color: #075e54;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .chat-input button:hover {
+            background-color: #128c7e;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* Adjust user list item styles */
+        .user {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .user span {
+            flex: 1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="user-list">
+                {% for user in users %}
+                <div class="user">
+                    {% if user.avatar == source %}
+                        <img src="{{user.avatar.url}}"
+                        class="avatar" alt="Avatar">
+                    {% else %}
+                        <img src="https://direct-rent-static-assets.s3.us-west-2.amazonaws.com/profile_pictures/profile-default.256x256.png"
+                        class="avatar" alt="Avatar">
+                    {% endif %}
+                    <span>{{user.username}}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="chat-window">
+            <div class="chat-header">Chat with People</div>
+            <!-- <div class="chat-messages" id="chat-messages">
+                message here
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-button">Send</button>
+            </div> -->
+        </div>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

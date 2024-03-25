@@ -9,5 +9,5 @@ urlpatterns = [
         MessageListAPIView.as_view(),
         name="messages_list",
     ),
-    path("messages/send/", SendMessageAPIView.as_view(), name="send_message"),
+    path("messages/<int:chat_id>/send/", SendMessageAPIView.as_view(), name="send_message"),
 ]
