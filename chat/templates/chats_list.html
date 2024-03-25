@@ -124,7 +124,7 @@
                         <img src="https://direct-rent-static-assets.s3.us-west-2.amazonaws.com/profile_pictures/profile-default.256x256.png"
                         class="avatar" alt="Avatar">
                     {% endif %}
-                    <span>{{user.username}}</span>
+                    <a href="{% url 'user_chat' user_id=user.id %}"><span>{{user.username}}</span></a>
                 </div>
                 {% endfor %}
             </div>

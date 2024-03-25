@@ -22,6 +22,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf import settings
 from django.conf.urls.static import static
+from chat.views import home_page
 
 
 schema_view = get_schema_view(
@@ -39,6 +40,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", home_page, name="home_page"),
     path("users/", include("users.urls")),
     path("chats/", include("chat.urls")),
     path(
