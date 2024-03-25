@@ -84,6 +84,8 @@ class SendMessageAPIView(APIView):
                     "current_user": user,
                     "serializer": serializer,
                     "receiver_id": chat.receiver_id,
+                    "receiver": chat.receiver,
+                    "chat_id": chat_id,
                     "chat_id": chat_id,
                 }
             )
