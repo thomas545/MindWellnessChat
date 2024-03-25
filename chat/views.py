@@ -34,7 +34,7 @@ class ChatAPIView(generics.GenericAPIView):
         users = UserModel.objects.exclude(Q(pk=user.pk) | Q(is_superuser=True))
         # chats = Chat.objects.filter(Q(sender=user) | Q(receiver=user))
         return Response({"users": users})
-    
+
 
 def redirect_user_to_chat(request, user_id):
     print("requ ->> ", request.user)
@@ -45,10 +45,8 @@ def redirect_user_to_chat(request, user_id):
         chat = Chat.objects.create(sender=request.user, receiver_id=user_id)
     else:
         chat = chat.last()
-    
 
     return redirect("send_message", chat_id=chat.id)
-    
 
 
 class MessageListAPIView(generics.GenericAPIView):
@@ -91,8 +89,6 @@ class SendMessageAPIView(APIView):
             )
 
     def post(self, request, chat_id, *args, **kwargs):
-        print("in post->>> ", chat_id)
-
         user = request.user
         serializer = SendMessageSerializer(data=request.data)
         if not serializer.is_valid():
