@@ -37,10 +37,10 @@ class ChatAPIView(generics.GenericAPIView):
 
 
 def redirect_user_to_chat(request, user_id):
-    print("requ ->> ", request.user)
-    print("uid ->>> ", user_id)
-
-    chat = Chat.objects.filter(Q(sender_id=user_id) | Q(receiver_id=user_id))
+    chat = Chat.objects.filter(
+        (Q(sender_id=user_id) & Q(receiver_id=request.user))
+        | (Q(sender_id=request.user) & Q(receiver_id=user_id))
+    )
     if not chat:
         chat = Chat.objects.create(sender=request.user, receiver_id=user_id)
     else:
@@ -69,22 +69,27 @@ class SendMessageAPIView(APIView):
     template_name = "chat_details.html"
 
     def get(self, request, chat_id, *args, **kwargs):
-        print("ccc ->> ", chat_id)
         user = request.user
-        messages = Message.objects.filter(
-            Q(chat_id=chat_id) & (Q(sender=user) | Q(receiver=user))
-        ).order_by("created_at")
+        messages = Message.objects.filter(Q(chat_id=chat_id)).order_by("created_at")
         chat = Chat.objects.get(id=chat_id)
+
+        if chat.receiver == user:
+            receiver = chat.sender
+        elif chat.sender == user:
+            receiver = chat.receiver
+        else:
+            receiver = chat.receiver
 
         serializer = SendMessageSerializer(data=request.data)
         if not serializer.is_valid():
+            print("return res->> ", serializer.is_valid())
             return Response(
                 {
                     "messages": messages,
                     "current_user": user,
                     "serializer": serializer,
                     "receiver_id": chat.receiver_id,
-                    "receiver": chat.receiver,
+                    "receiver": receiver,
                     "chat_id": chat_id,
                     "chat_id": chat_id,
                 }
